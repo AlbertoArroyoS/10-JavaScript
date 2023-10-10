@@ -4,57 +4,80 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <script type="text/javascript" src="script.js"></script>
     <title>Formularios</title>
 </head>
 <body>
-    <h1>Actividad de refuerto 1</h1>
+    <h1>Actividad de refuerzo 1</h1>
     <form action="procesarPeticion.jsp" method="get">
         <fieldset>
             <br/>
             <legend>Carrito de la compra </legend>
-            <label for="nombre">Nombre artículo: </label>
+            <label for="nombre-articulo">Nombre artículo: </label>
             <input id="nombre-articulo" type="text" name="nombre"/>
+            <small id="error-nombre"></small>
             <br/>
             <br/>
-            <label for="precio">Precio artículo: </label>
-            <input type="number" id="precio-articulo"/><br/>
+            <label for="precio-articulo">Precio artículo: </label>
+            <input type="number" id="precio-articulo" name="precio"/>
+            <small id="error-precio"></small>
+            <br/>
             <br/>
             <label for="unidades">Unidades: </label>
-            <input type="number" id="unidades"  value="1" min="1" max="50" />
+            <input type="number" name="cantidad" id="unidades" value="1" min="1" max="50" />
             <br/>
             <br/>
             <button type="button" id="añadir-carrito" >Añadir al carrito</button>
             <br/>
             <br/>
-            <label for="total-articulos">Articulos en el carrito: </label>
-            <input id="total-articulos" type="text" name="total-articulos" />
+            <label for="total-articulos">Artículos en el carrito: </label>
+            <input id="total-articulos" type="text" name="total" />
             <br/>
             <br/>
             <label for="precio-total">Precio total del carrito: </label>
-            <input id="precio-total" type="text" name="precio-total" />
+            <input id="precio-total" type="text" name="precio" />
             <br/>
             <br/>
             <br/>
-            <label for="forma-pago">Forma de pago: </label>
-            <select name="forma-pago">
-                <option value="TAR">Tarjeta</option>
+            <label for="pago">Forma de pago: </label>
+            <select name="forma-pago" id="pago">
                 <option value="EF">Efectivo</option>
+                <option value="TAR">Tarjeta</option>
             </select>
             <br/>
             <br/>
+            <div id="tarjeta-credito">
+                <label for="titular-tarjeta">Titular tarjeta: </label>
+                <input id="titular-tarjeta" type="text" name="nombre-tarjeta"/>
+                <br/>
+                <br/>
+                <label for="numero-tarjeta">Número tarjeta: </label>
+                <input type="number" id="numero-tarjeta" name="numero-tarjeta"/>
+                <br/>
+                <br/>
+                <label for="cvv">CVV: </label>
+                <input type="number" id="cvv" name="cvv"/>
+            </div>
+            <div id="efectivo">
+                <br/>
+                <br/>
+                <label for="importe-efectivo">Importe efectivo: </label>
+                <input type="text" id="importe-efectivo" name="importe-efectivo"/>
+                <br/>
+                <br/>
+            </div>
             <br/>
             <br/>
             <br/>
             <br/>
-            <input type="checkbox" name="terminos" value="Y" />
-            <label for="terminos">Acepto las condiciones de compra </label>
-            <br/>	
+            <input type="checkbox" name="terminos" value="Y" id="aceptar"/>
+            <label for="aceptar">Acepto las condiciones de compra </label>
+            <br/>
             <br/>
 
             <button type="button" id="imprimir" >Imprimir</button>
-            <input type="reset" value="Restablecer" />
+            <input type="button" value="Restablecer" id="resetear" />
         </fieldset>
     </form>
 </body>
