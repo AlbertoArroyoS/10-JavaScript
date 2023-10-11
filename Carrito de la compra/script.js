@@ -196,6 +196,8 @@ window.addEventListener("load",()=>{
         articulosCarrito.value='';
         document.getElementById('importe-efectivo').value= '';
         formaPago.value='';
+        cajasTarjeta.style.display='none';
+        cajaEfectivo.style.display='none';
 
         //Otra opcion recargando la pagina
         //window.location.reload()

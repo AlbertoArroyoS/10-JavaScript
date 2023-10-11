@@ -86,7 +86,9 @@ function añadirArticulos(){
         articulosCarrito.value += clave + ', ';
       }
 
-   // articulosCarrito.value = diccionarioArticulos;
+    // Convierte el array en una cadena
+    //articulosCarrito.value = arrayArticulos.join(', '); 
+   
     resetCajas();
 
 }
@@ -202,6 +204,8 @@ window.addEventListener("load",()=>{
         articulosCarrito.value='';
         document.getElementById('importe-efectivo').value= '';
         formaPago.value='';
+        cajasTarjeta.style.display='none';
+        cajaEfectivo.style.display='none';
 
         //Otra opcion recargando la pagina
         //window.location.reload()
