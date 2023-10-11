@@ -31,7 +31,8 @@ let stringFormaPago;
 
 //inicializar variables en funcion
 function initVariables(){
-    arrayArticulos = [];
+    diccionarioArticulos = {};
+    arrayArticulos =[];
     //arrayArticulos = new Array();
     
     nombreArticulo = document.getElementById("nombre-articulo");
@@ -67,6 +68,7 @@ function añadirArticulos(){
 
     articulo = nombreArticulo.value;
     //precio por pantalla
+    arrayArticulos.push(articulo);
     precio= parseFloat(precioArticulo.value);
     cantidad = parseFloat(unidades.value);
     total = precio * cantidad;
@@ -76,12 +78,15 @@ function añadirArticulos(){
     precioTotal.value = acumuladorPrecio.toString();
 
     //meter el articulo en el array
-    arrayArticulos.push(articulo);
-    //nombreArray.unshift(elementos) Añade el elemento del array al principio
-    //articulosCarrito.value = arrayArticulos;
-    articulosCarrito.value = arrayArticulos.join(', '); // Convierte el array en una cadena
-
+    diccionarioArticulos[articulo] = precio;
     
+    articulosCarrito.value='';
+    for (let clave in diccionarioArticulos) {
+        console.log('Clave:', clave);
+        articulosCarrito.value += clave + ', ';
+      }
+
+   // articulosCarrito.value = diccionarioArticulos;
     resetCajas();
 
 }
@@ -92,6 +97,7 @@ function añadirArticulos(){
     precioArticulo.value='';
     unidades.value=1;
     nombreArticulo.focus();
+    
  }
  //funcion validar formulario precio, si meto algun caracter no digito avisa y pone el boton disabled
 
