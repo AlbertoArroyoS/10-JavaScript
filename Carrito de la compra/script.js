@@ -56,9 +56,11 @@ function initVariables(){
 }
 
 //funciones
+/*
 function nombreFuncion(){
 
 }
+*/
 
 //funcion añadir articulos al array
 function añadirArticulos(){
@@ -87,6 +89,23 @@ function añadirArticulos(){
     precioArticulo.value='';
     unidades.value=1;
     nombreArticulo.focus();
+ }
+ //funcion validar formulario precio, si meto algun caracter no digito avisa y pone el boton disabled
+
+ function validarPrecio(){
+    // \D cualquier caracter que no sea digito
+    //para 
+    let patronPrecio = /\D/;
+
+	if(patronPrecio.test(precioArticulo.value)){
+        mensajeErrorPrecio.textContent = 'tipo de dato incorrecto';
+        botonAñadir.disabled = true;
+      
+	}else{
+        mensajeErrorPrecio.textContent = '';
+        botonAñadir.disabled = false;
+	}
+
  }
 
 //Onload con los listeners
@@ -136,6 +155,12 @@ window.addEventListener("load",()=>{
         }
       
         	
+	});
+    //listener comprobar si es digito o no el precio
+
+    precioArticulo.addEventListener("input",()=>{
+
+        validarPrecio();
 	});
 
     //listener al darle al checkbox se habilita el boton imprimir
