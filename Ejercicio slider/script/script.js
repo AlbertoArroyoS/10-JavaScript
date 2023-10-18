@@ -29,46 +29,29 @@ function initVariables(){
 
 //Al hacer un click aumenta en 1 el contador de la imagen y si es la ultima imagen vuelve a la primera
 function listeners(){
-
+    //al pulsar en > siguiente imagen
     botonAvanzar.addEventListener('click', () => {
-        //Cuando llega a la ultima foto (imagenes totales), la siguiente vez que se pulsa se pone la 1
-        if (contadorImg==imgTotales){
-            contadorImg =1;
-        }else{
-            contadorImg ++;
-        }
-        cambiarImagen(contadorImg);
-        marcarRadio(contadorImg);      
+        siguienteImagen();     
     });
-
+    //al pulsar en < anterior imagen
     botonRetroceder.addEventListener('click', () => {
-        //Si estamos en la primera foto, al darle atras se pone la ultima foto
-        if (contadorImg==1){
-            contadorImg = imgTotales;
-        }else{
-            contadorImg --;
-        }
-        cambiarImagen(contadorImg);
-        marcarRadio(contadorImg);    
+        anteriorImagen();
     });
-
-
+    //al pasar el puntero por >
     botonAvanzar.addEventListener("mouseenter",()=>{
 		botonAvanzar.style.cursor = "pointer";
-		botonAvanzar.style.backgroundColor = "rgba(0, 0, 0, 0.4)";
+		botonAvanzar.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
      
-
 	});
 	//al salir el raton se vuelve negro
 	botonAvanzar.addEventListener("mouseout",()=>{
 		botonAvanzar.style.backgroundColor = "transparent";
 	});
-
+    //al pasar el puntero por <
     botonRetroceder.addEventListener("mouseenter",()=>{
 		botonRetroceder.style.cursor = "pointer";
-		botonRetroceder.style.backgroundColor = "rgba(0, 0, 0, 0.4)";
-     
-
+		botonRetroceder.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
+    
 	});
 	//al salir el raton se vuelve negro
 	botonRetroceder.addEventListener("mouseout",()=>{
@@ -94,7 +77,7 @@ function listeners(){
         cambiarImagen(contadorImg);    
      });
 
-     //al pasar por los radio que se cambie el cursor
+    //al pasar por los radio que se cambie el cursor
 
     opcion1.addEventListener("mouseenter",()=>{
 		opcion1.style.cursor = "pointer";
@@ -119,18 +102,48 @@ function cambiarImagen(numero){
 
 }
 
-//funcion marcar el radio button segun la imagen que sea al pasar de imagen, como va por posicion,
-// y la posicion empieza por 0, pero la imagen en 1, habra que restar 1
+
+
+//funcion para que pasar a la siguiente imagen
+//Cuando llega a la ultima foto (imagenes totales), la siguiente vez que se pulsa se pone la 1
+function siguienteImagen() {
+    if (contadorImg === imgTotales) {
+        contadorImg = 1;
+    } else {
+        contadorImg++;
+    }
+    cambiarImagen(contadorImg);
+    marcarRadio(contadorImg);
+}
+
+//funcion para que pasar a la anterior imagen
+
+function anteriorImagen(){
+    //Si estamos en la primera foto, al darle atras se pone la ultima foto
+    if (contadorImg==1){
+        contadorImg = imgTotales;
+    }else{
+        contadorImg --;
+    }
+    cambiarImagen(contadorImg);
+    marcarRadio(contadorImg);    
+}
+//funcion hacher check auto el radio button segun la imagen que sea al pasar a otra, como va por posicion,
+// y la posicion empieza por 0, pero la imagen en 1 entonces esta en la posicion 0
+//los radio button tienen name="radio-img"
 
 function marcarRadio(numero){
+    //al numero de imagen le restaremos 1 y nos dara su posicion que ocupa en el array
+    //y la posicion que ocupa la pondremos en checked como verdadero
     radioSeleccion[numero-1].checked = true;
 }
 
-
+//Evento onload
 window.addEventListener("load",()=>{
 
     initVariables();
 	listeners();
-  //  radioSeleccion[numero].checked
+  // Establece el intervalo para cambiar de imagen cada 3 segundos (3000 ms)
+    setInterval(siguienteImagen, 3000);   
 
 });
