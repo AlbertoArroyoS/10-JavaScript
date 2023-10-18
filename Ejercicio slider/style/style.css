@@ -52,3 +52,30 @@
     
 }
 
+
+/* *************************************************************************************** */
+/* CSS RESPONSIVO */
+
+@media screen and (min-width: 1200px) {
+
+    #siguiente-img {
+        right: 20%;
+        
+    }
+    
+    #anterior-img {
+        left: 20%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+
+    #siguiente-img {
+        right: 25%;
+        
+    }
+    
+    #anterior-img {
+        left: 25%;
+    }
+}
