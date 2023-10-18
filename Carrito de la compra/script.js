@@ -167,6 +167,7 @@ window.addEventListener("load",()=>{
 	});
 
     //listener al darle al checkbox se habilita el boton imprimir
+    //checkbox puede ser onchange o onclick como forma de pago
     document.getElementById('aceptar').addEventListener('click', () => {
         
         document.getElementById('imprimir').disabled = false;
