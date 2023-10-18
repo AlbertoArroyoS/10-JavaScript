@@ -79,3 +79,26 @@
         left: 25%;
     }
 }
+
+@media screen and (min-width: 2000px) {
+
+    #siguiente-img {
+        right: 32%;
+        
+    }
+    
+    #anterior-img {
+        left: 32%;
+    }
+}
+@media screen and (min-width: 2700px) {
+
+    #siguiente-img {
+        right: 37%;
+        
+    }
+    
+    #anterior-img {
+        left: 37%;
+    }
+}
