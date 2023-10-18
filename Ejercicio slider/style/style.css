@@ -1,7 +1,7 @@
 .imagen-modal{
 
-   /* display: flex;
-    justify-content: center;  */
+    display: flex;
+    justify-content: center;  
     text-align: center;
 }
 
@@ -20,16 +20,18 @@
     font-weight: bold;
     font-size: 80px;
     z-index: 2;
-    position:absolute;
+    position:fixed;
     top: 150px;
     color: white;
-    
     border-radius: 35%;
     
 }
+/*
 .imagen-modal h1:hover{
-  /*  background-color: rgba(0, 0, 0, 0.2);*/
+    background-color: rgba(0, 0, 0, 0.2);
 }
+*/
+
 
 #siguiente-img {
     right: 120px;
@@ -38,5 +40,15 @@
 
 #anterior-img {
     left: 120px;
+}
+
+.radio-seleccion{
+    position: absolute;
+    top: 550px;
+    z-index: 2;
+    margin-bottom: 500px;
+    text-align: center;
+    justify-content: center;
+    
 }
 

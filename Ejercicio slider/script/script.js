@@ -4,6 +4,7 @@ let imgTotales;
 let botonAvanzar;
 let botonRetroceder;
 let imagen;
+let radioSeleccion;
 
 function initVariables(){
 
@@ -13,6 +14,7 @@ function initVariables(){
     botonAvanzar = document.getElementById("siguiente-img");
     botonRetroceder = document.getElementById("anterior-img");
     imagen = document.getElementById("imagen")
+    radioSeleccion = document.getElementsByName("radio-img");
 
 }
 
@@ -27,7 +29,8 @@ function listeners(){
         }else{
             contadorImg ++;
         }
-        cambiarImagen(contadorImg);     
+        cambiarImagen(contadorImg);
+        marcarRadio(contadorImg);      
     });
 
     botonRetroceder.addEventListener('click', () => {
@@ -37,7 +40,8 @@ function listeners(){
         }else{
             contadorImg --;
         }
-        cambiarImagen(contadorImg);     
+        cambiarImagen(contadorImg);
+        marcarRadio(contadorImg);    
     });
 
 
@@ -64,11 +68,19 @@ function listeners(){
 	});
 
 }
+//funcion en la que segun el numero entrado por parametro cambia el nombre de la imagen
 
 function cambiarImagen(numero){
 
     imagen.src="/img/img-0"+numero+".jpg";
 
+}
+
+//funcion marcar el radio button segun la imagen que sea al pasar de imagen, como va por posicion,
+// y la posicion empieza por 0, pero la imagen en 1, habra que restar 1
+
+function marcarRadio(numero){
+    radioSeleccion[numero-1].checked = true;
 }
 
 
@@ -77,5 +89,6 @@ window.addEventListener("load",()=>{
 
     initVariables();
 	listeners();
+  //  radioSeleccion[numero].checked
 
 });
