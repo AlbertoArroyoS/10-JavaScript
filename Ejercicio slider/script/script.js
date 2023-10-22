@@ -9,6 +9,8 @@ let opcion1;
 let opcion2;
 let opcion3;
 let opcion4;
+//intervalo
+let intervaloTiempo;
 
 
 function initVariables(){
@@ -24,19 +26,16 @@ function initVariables(){
     opcion2 = document.getElementById("opcion2");
     opcion3 = document.getElementById("opcion3");
     opcion4 = document.getElementById("opcion4");
+      
 }
 
 
 //Al hacer un click aumenta en 1 el contador de la imagen y si es la ultima imagen vuelve a la primera
 function listeners(){
     //al pulsar en > siguiente imagen
-    botonAvanzar.addEventListener('click', () => {
-        siguienteImagen();     
-    });
+    botonAvanzar.addEventListener('click', siguienteImagen);
     //al pulsar en < anterior imagen
-    botonRetroceder.addEventListener('click', () => {
-        anteriorImagen();
-    });
+    botonRetroceder.addEventListener('click', anteriorImagen);
     //al pasar el puntero por >
     botonAvanzar.addEventListener("mouseenter",()=>{
 		botonAvanzar.style.cursor = "pointer";
@@ -59,37 +58,45 @@ function listeners(){
 	});
 
     //al pulsar botones radio cambia la imagen y pone el contador de la imagen en el numero correspondiente
-    opcion1.addEventListener('click', () => {
+    radioSeleccion[0].addEventListener('click', () => {
         contadorImg = 1;
         cambiarImagen(contadorImg);
-           
+        clearInterval(intervaloTiempo);
+        iniciarIntervalo();    
     });
-    opcion2.addEventListener('click', () => {
+    radioSeleccion[1].addEventListener('click', () => {
         contadorImg = 2;
-        cambiarImagen(contadorImg);    
+        cambiarImagen(contadorImg);
+        clearInterval(intervaloTiempo);
+        iniciarIntervalo();     
      });
-     opcion3.addEventListener('click', () => {
+    radioSeleccion[2].addEventListener('click', () => {
         contadorImg = 3;
-        cambiarImagen(contadorImg);    
+        cambiarImagen(contadorImg);
+        clearInterval(intervaloTiempo);
+        iniciarIntervalo();     
      });
-     opcion4.addEventListener('click', () => {
+    radioSeleccion[3].addEventListener('click', () => {
         contadorImg = 4;
-        cambiarImagen(contadorImg);    
+        cambiarImagen(contadorImg);
+        clearInterval(intervaloTiempo);
+        iniciarIntervalo();     
      });
+
 
     //al pasar por los radio que se cambie el cursor
 
-    opcion1.addEventListener("mouseenter",()=>{
-		opcion1.style.cursor = "pointer";
+    radioSeleccion[0].addEventListener("mouseenter",()=>{
+		radioSeleccion[0].style.cursor = "pointer";
 	});
-    opcion2.addEventListener("mouseenter",()=>{
-		opcion2.style.cursor = "pointer";
+    radioSeleccion[1].addEventListener("mouseenter",()=>{
+		radioSeleccion[1].style.cursor = "pointer";
 	});
-    opcion3.addEventListener("mouseenter",()=>{
-		opcion3.style.cursor = "pointer";
+    radioSeleccion[2].addEventListener("mouseenter",()=>{
+		radioSeleccion[2].style.cursor = "pointer";
 	});
-    opcion4.addEventListener("mouseenter",()=>{
-		opcion4.style.cursor = "pointer";
+    radioSeleccion[3].addEventListener("mouseenter",()=>{
+		radioSeleccion[3].style.cursor = "pointer";
 	});
 
 
@@ -98,7 +105,7 @@ function listeners(){
 
 function cambiarImagen(numero){
 
-    imagen.src="/img/img-0"+numero+".jpg";
+    imagen.src="img/img-0"+numero+".jpg";
 
 }
 
@@ -138,12 +145,17 @@ function marcarRadio(numero){
     radioSeleccion[numero-1].checked = true;
 }
 
+function iniciarIntervalo() {
+    intervaloTiempo = setInterval(siguienteImagen, 3000);
+}
+
 //Evento onload
 window.addEventListener("load",()=>{
 
+    
     initVariables();
 	listeners();
   // Establece el intervalo para cambiar de imagen cada 3 segundos (3000 ms)
-    setInterval(siguienteImagen, 3000);   
+    iniciarIntervalo();
 
 });
