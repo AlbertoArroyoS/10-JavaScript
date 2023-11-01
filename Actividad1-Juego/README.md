@@ -2,13 +2,8 @@
 
 Realizada por:
 
-**Grupo 13**
-
-**ALEJANDRO AGUIAR DIAZ**
-
 **ALBERTO ARROYO SANTOFIMIA**
 
-El codigo se encuentra en la **rama main**.
 
 Enlace a la web del juego:
 https://albertoarroyos.github.io/Actividad1-Juego/
