@@ -1,7 +1,7 @@
 # 05-JavaScript
 Ejercicios JavaScript
 
-# **Juego piedra, papel o tijeras**
+# **Juego piedra, papel, tijeras, lagarto, Spock**
 
 Actividad 1. Juego de Piedra, Papel, Tijeras, lagarto, Spock
 Crea un programa que permita al jugador ingresar su elección: "piedra",
